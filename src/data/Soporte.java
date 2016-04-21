@@ -41,10 +41,18 @@ public class Soporte {
         this.prestado = prestado;
     }
 
+    public String getEstado(){
+      String estado="";
+      if(!this.getPrestado()){
+        estado+="Disponible";    
+      }else{
+        estado+="Prestado";  
+      }
+      return estado;
+    }
     
     @Override
     public String toString() {
-        //return "Soporte{" + "titulo=" + titulo + ", autor=" + autor + '}';
-        return "Soporte{" + "titulo= " + titulo;
+        return "Soporte{" + "titulo= " + titulo + " Estado= " + getEstado() + " ";
     }
 }

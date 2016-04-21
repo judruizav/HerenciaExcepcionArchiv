@@ -17,7 +17,7 @@ import Exception.SoporteException;
 import Exception.DVDException;
 import Exception.LibroException;
 import Exception.CDException;
-
+import Exception.PrestamoException;
 /**
  *
  * @author fabian.giraldo
@@ -42,7 +42,7 @@ public class UI {
         }
    }
     
-    public void menu() {
+    public int menu(int c) {
         int opcion = 0; 
         System.out.println("Bienvenido a la mediateca");
         System.out.println("Opciones. 1. Cargar datos 2. Imprimir. 3. Buscar por titulo");
@@ -79,19 +79,25 @@ public class UI {
             if(opc == 1){
             try{
               if(soporte.getPrestado()){
-                throw new SoporteException("El material ya esta prestado");    
-              }    
-            }catch(SoporteException ex){
+                throw new SoporteException("No se puede hacer el prestamo, el material no esta disponible");    
+              }
+              if(c==3){
+                throw new PrestamoException("No se puede hacer el prestamo, no se pueden hacer mas de tres prestamos por usuario");    
+              }       
+              this.servicio.PrestarMaterial(soporte);
+              c++;
+              System.out.println("Prestamo realizado");
+            }catch(SoporteException | PrestamoException ex){  
               System.out.println(ex.getMessage());
             }
-              this.servicio.PrestarMaterial(soporte);        
-            }
+           }
           }else{
             System.out.println("No existe material disponible");
           }
         }
         else if(opcion!=1&&opcion!=2&&opcion!=3){
             System.out.println("Opcion invalida");
-        }        
+        }
+    return c;          
     }   
 }

@@ -38,7 +38,7 @@ public class Libro extends Soporte{
     @Override
     public String toString() {
         
-        return "Libro{" + super.toString() +"isbn=" + isbn + "Numero de paginas=" + numPaginas + '}';
+        return "Libro{" + super.toString() +" isbn{" + isbn + "}" +" Numero de paginas{" + numPaginas + '}';
     }
     
     

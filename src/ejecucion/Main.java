@@ -27,9 +27,10 @@ public class Main {
         int c=0;
         while(indicador == false){
             
-               vista.menu();
+               c= vista.menu(c);
                System.out.println("Desea continuar...1. Si 2. No");
                opcion = scanner.nextInt();
+               System.out.println(c);
                if(opcion != 1)
                   indicador = true;
            
