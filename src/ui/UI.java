@@ -43,7 +43,7 @@ public class UI {
    }
     
     public void menu() {
-        int opcion = 0;     
+        int opcion = 0; 
         System.out.println("Bienvenido a la mediateca");
         System.out.println("Opciones. 1. Cargar datos 2. Imprimir. 3. Buscar por titulo");
         opcion = this.sc.nextInt();
@@ -76,17 +76,15 @@ public class UI {
             System.out.println(soporte);
             System.out.println("Desea pedirlo prestado? 1. Si 2. No");
             int opc = this.sc.nextInt();
-            int c= 0;
             if(opc == 1){
             try{
-              this.servicio.PrestarMaterial(soporte);
-              c++;
-              if(c > 3){
-                throw new SoporteException("No se puede prestar mas de tres veces el material");
+              if(soporte.getPrestado()){
+                throw new SoporteException("El material ya esta prestado");    
               }    
-            } catch (SoporteException ex){
+            }catch(SoporteException ex){
               System.out.println(ex.getMessage());
-            }        
+            }
+              this.servicio.PrestarMaterial(soporte);        
             }
           }else{
             System.out.println("No existe material disponible");

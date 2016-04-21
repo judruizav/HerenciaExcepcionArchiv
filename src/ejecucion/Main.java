@@ -24,6 +24,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         boolean indicador = false;
         int opcion = 0;
+        int c=0;
         while(indicador == false){
             
                vista.menu();

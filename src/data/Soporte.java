@@ -28,6 +28,10 @@ public class Soporte {
     public Autor getAutor() {
         return autor;
     }
+    
+    public boolean getPrestado(){
+      return this.prestado;    
+    }
 
     public void setAutor(Autor autor) {
         this.autor = autor;
@@ -40,6 +44,7 @@ public class Soporte {
     
     @Override
     public String toString() {
-        return "Soporte{" + "titulo=" + titulo + ", autor=" + autor + '}';
+        //return "Soporte{" + "titulo=" + titulo + ", autor=" + autor + '}';
+        return "Soporte{" + "titulo= " + titulo;
     }
 }

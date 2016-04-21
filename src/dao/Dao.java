@@ -62,7 +62,6 @@ public class Dao {
       ArrayList<Autor> autores= new ArrayList<Autor>();
       String titulo = sc.next().trim();
       int c=0;
-      Autor autor = cargarAutor(sc);
       while(sc.hasNextInt()== false){
         autores.add(cargarAutor(sc));
         c++;
@@ -80,8 +79,11 @@ public class Dao {
       if(duracion>20){
           throw new DVDException("El DVD no puede durar mas de 20 min");
       }
-      actores.add(autor);
-      dvd= new DVD(titulo, autores, actores, duracion);
+      while(!sc.hasNextInt()){
+        actores.add(cargarAutor(sc));    
+      }
+      int año= sc.nextInt();
+      dvd= new DVD(titulo, autores, actores, duracion, año);
       return dvd;
     }
     

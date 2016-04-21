@@ -40,7 +40,17 @@ public class CD extends Soporte{
         this.musicos = musicos;
     }
     
-    
+    public String imprimirMusicos(){
+      String artistas= "";
+      for(int i=0; i<this.musicos.size(); i++){
+        artistas+=this.musicos.get(i).toString();
+      }
+      return artistas;
+    }
+    @Override
+    public String toString(){
+      return "CD{ " + super.toString() + imprimirMusicos() + "Duracion{" + this.duracion + "}" + "Genero{" + this.genero + "}";
+    }
     
     
 }
